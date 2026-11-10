@@ -1,0 +1,181 @@
+[
+  {
+    "id": "empty",
+    "title": "No variables, one outcome",
+    "request": {
+      "variables": [],
+      "start": "",
+      "target": ""
+    }
+  },
+  {
+    "id": "independent",
+    "title": "Independent choices: incomparable is not indifferent",
+    "request": {
+      "variables": [
+        {
+          "name": "A",
+          "parents": [],
+          "preferred": [1]
+        },
+        {
+          "name": "B",
+          "parents": [],
+          "preferred": [1]
+        }
+      ],
+      "start": "01",
+      "target": "10"
+    }
+  },
+  {
+    "id": "chain",
+    "title": "A valid path is not a violation-score drop",
+    "request": {
+      "variables": [
+        {
+          "name": "A",
+          "parents": [],
+          "preferred": [1]
+        },
+        {
+          "name": "B",
+          "parents": ["A"],
+          "preferred": [0, 1]
+        },
+        {
+          "name": "C",
+          "parents": ["B"],
+          "preferred": [0, 1]
+        }
+      ],
+      "start": "000",
+      "target": "100"
+    }
+  },
+  {
+    "id": "consistent-cycle",
+    "title": "Cyclic dependencies, consistent preferences",
+    "request": {
+      "variables": [
+        {
+          "name": "A",
+          "parents": ["B"],
+          "preferred": [0, 1]
+        },
+        {
+          "name": "B",
+          "parents": ["A"],
+          "preferred": [0, 1]
+        }
+      ],
+      "start": "01",
+      "target": "10"
+    }
+  },
+  {
+    "id": "inconsistent-cycle",
+    "title": "Same dependency cycle, inconsistent preferences",
+    "request": {
+      "variables": [
+        {
+          "name": "A",
+          "parents": ["B"],
+          "preferred": [0, 1]
+        },
+        {
+          "name": "B",
+          "parents": ["A"],
+          "preferred": [1, 0]
+        }
+      ],
+      "start": "00",
+      "target": "11"
+    }
+  },
+  {
+    "id": "fanout",
+    "title": "One improving flip, three violated rows",
+    "request": {
+      "variables": [
+        {
+          "name": "A",
+          "parents": [],
+          "preferred": [1]
+        },
+        {
+          "name": "B",
+          "parents": ["A"],
+          "preferred": [0, 1]
+        },
+        {
+          "name": "C",
+          "parents": ["A"],
+          "preferred": [0, 1]
+        },
+        {
+          "name": "D",
+          "parents": ["A"],
+          "preferred": [0, 1]
+        }
+      ],
+      "start": "0000",
+      "target": "1000"
+    }
+  },
+  {
+    "id": "collider",
+    "title": "A conditional row is not an unconditional wish",
+    "request": {
+      "variables": [
+        {
+          "name": "A",
+          "parents": [],
+          "preferred": [1]
+        },
+        {
+          "name": "B",
+          "parents": [],
+          "preferred": [1]
+        },
+        {
+          "name": "C",
+          "parents": ["A", "B"],
+          "preferred": [0, 1, 1, 0]
+        }
+      ],
+      "start": "001",
+      "target": "110"
+    }
+  },
+  {
+    "id": "two-cycles",
+    "title": "Two independent consistent dependency cycles",
+    "request": {
+      "variables": [
+        {
+          "name": "A",
+          "parents": ["B"],
+          "preferred": [0, 1]
+        },
+        {
+          "name": "B",
+          "parents": ["A"],
+          "preferred": [0, 1]
+        },
+        {
+          "name": "C",
+          "parents": ["D"],
+          "preferred": [0, 1]
+        },
+        {
+          "name": "D",
+          "parents": ["C"],
+          "preferred": [0, 1]
+        }
+      ],
+      "start": "0000",
+      "target": "1111"
+    }
+  }
+]
