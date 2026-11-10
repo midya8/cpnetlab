@@ -3,7 +3,7 @@ requires = ["setuptools>=61"]
 build-backend = "setuptools.build_meta"
 [project]
 name = "cpnetlab"
-version = "0.1.0"
+version = "0.2.0"
 description = "Exact finite qualitative preference networks with independent certificates"
 requires-python = ">=3.10"
 license = "MIT"
