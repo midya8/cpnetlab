@@ -1,0 +1,26 @@
+{
+  "variables": [
+    {
+      "name": "A",
+      "parents": [],
+      "preferred": [1]
+    },
+    {
+      "name": "B",
+      "parents": ["A"],
+      "preferred": [0, 1]
+    },
+    {
+      "name": "C",
+      "parents": ["A"],
+      "preferred": [0, 1]
+    },
+    {
+      "name": "D",
+      "parents": ["A"],
+      "preferred": [0, 1]
+    }
+  ],
+  "start": "0000",
+  "target": "1000"
+}
