@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+[project]
+name = "cpnetlab"
+version = "0.1.0"
+description = "Exact finite qualitative preference networks with independent certificates"
+requires-python = ">=3.10"
+license = "MIT"
+[project.scripts]
+cpnetlab = "cpnetlab.__main__:main"
+[tool.setuptools]
+packages = ["cpnetlab"]
