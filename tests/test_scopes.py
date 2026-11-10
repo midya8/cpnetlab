@@ -80,6 +80,9 @@ class Scopes(unittest.TestCase):
         self.assertEqual(a["minimal_conflicts"], [195, 246])
         self.assertEqual(a["minimal_withdrawals"], [2, 5, 17, 33, 64, 128])
         self.assertEqual(a["minimum_withdrawal_size"], 1)
+        self.assertEqual(
+            sorted(m.bit_count() for m in a["minimal_withdrawals"]), [1, 1, 1, 2, 2, 2]
+        )
         b = analyze_scopes(cs["detour-support"]["request"])
         self.assertEqual(b["minimal_forward_supports"], [5, 54])
         self.assertEqual([m.bit_count() for m in b["minimal_forward_supports"]], [2, 4])

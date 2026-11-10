@@ -31,7 +31,7 @@ rows suffice for a query path or cause inconsistency, and which withdrawals
 restore a ranking? It enumerates every subset of at most eight complete rows,
 with actual path, cycle and ranking witnesses, all minimal conflicts and all
 minimal withdrawals. Minimal does not mean minimum: the default eight-row
-control has four irreducible one-row withdrawals and two irreducible two-row
+control has three irreducible one-row withdrawals and three irreducible two-row
 withdrawals. A separate control has two-row and four-row minimal path supports.
 Whole-row withdrawal removes all justified flips, not one arbitrary edge.
 It is a counterfactual graph, not automatic preference revision or indifference.

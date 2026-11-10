@@ -50,7 +50,7 @@ zero variables still means one empty outcome. An absent path is null.
 
 Eight developed synthetic controls cover 865 total row subsets. The default
 three-variable, eight-row model has two minimal conflicts (masks 195 and 246),
-238 consistent masks out of 256 and six minimal withdrawals: 2, 5, 17, 33, 64, 128. Four withdrawals have size one and two have size two; every one is
+238 consistent masks out of 256 and six minimal withdrawals: 2, 5, 17, 33, 64, 128. Three withdrawals have size one and three have size two; every one is
 inclusion-minimal. Choosing an irreducible withdrawal does not imply choosing
 a smallest withdrawal, and neither implies a sensible human preference change.
 
