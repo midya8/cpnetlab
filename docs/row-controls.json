@@ -1,0 +1,191 @@
+[
+  {
+    "id": "empty",
+    "title": "No variables, one outcome",
+    "request": {
+      "variables": [],
+      "start": "",
+      "target": ""
+    }
+  },
+  {
+    "id": "fanout",
+    "title": "One improving flip, three violated rows",
+    "request": {
+      "variables": [
+        {
+          "name": "A",
+          "parents": [],
+          "preferred": [1]
+        },
+        {
+          "name": "B",
+          "parents": ["A"],
+          "preferred": [0, 1]
+        },
+        {
+          "name": "C",
+          "parents": ["A"],
+          "preferred": [0, 1]
+        },
+        {
+          "name": "D",
+          "parents": ["A"],
+          "preferred": [0, 1]
+        }
+      ],
+      "start": "0000",
+      "target": "1000"
+    }
+  },
+  {
+    "id": "consistent-cycle",
+    "title": "Cyclic dependencies, consistent preferences",
+    "request": {
+      "variables": [
+        {
+          "name": "A",
+          "parents": ["B"],
+          "preferred": [0, 1]
+        },
+        {
+          "name": "B",
+          "parents": ["A"],
+          "preferred": [0, 1]
+        }
+      ],
+      "start": "01",
+      "target": "10"
+    }
+  },
+  {
+    "id": "inconsistent-cycle",
+    "title": "Same dependency cycle, inconsistent preferences",
+    "request": {
+      "variables": [
+        {
+          "name": "A",
+          "parents": ["B"],
+          "preferred": [0, 1]
+        },
+        {
+          "name": "B",
+          "parents": ["A"],
+          "preferred": [1, 0]
+        }
+      ],
+      "start": "00",
+      "target": "11"
+    }
+  },
+  {
+    "id": "collider",
+    "title": "A conditional row is not an unconditional wish",
+    "request": {
+      "variables": [
+        {
+          "name": "A",
+          "parents": [],
+          "preferred": [1]
+        },
+        {
+          "name": "B",
+          "parents": [],
+          "preferred": [1]
+        },
+        {
+          "name": "C",
+          "parents": ["A", "B"],
+          "preferred": [0, 1, 1, 0]
+        }
+      ],
+      "start": "001",
+      "target": "110"
+    }
+  },
+  {
+    "id": "unequal-withdrawals",
+    "title": "Minimal is not minimum: one row or two",
+    "request": {
+      "variables": [
+        {
+          "name": "A",
+          "parents": ["B", "C"],
+          "preferred": [1, 0, 1, 1]
+        },
+        {
+          "name": "B",
+          "parents": ["C"],
+          "preferred": [0, 1]
+        },
+        {
+          "name": "C",
+          "parents": ["A"],
+          "preferred": [0, 1]
+        }
+      ],
+      "start": "000",
+      "target": "111"
+    }
+  },
+  {
+    "id": "two-conflicts",
+    "title": "Two conflicts: every repair must hit both",
+    "request": {
+      "variables": [
+        {
+          "name": "A",
+          "parents": ["B"],
+          "preferred": [0, 1]
+        },
+        {
+          "name": "B",
+          "parents": ["A"],
+          "preferred": [1, 0]
+        },
+        {
+          "name": "C",
+          "parents": ["D"],
+          "preferred": [0, 1]
+        },
+        {
+          "name": "D",
+          "parents": ["C"],
+          "preferred": [1, 0]
+        }
+      ],
+      "start": "0000",
+      "target": "1111"
+    }
+  },
+  {
+    "id": "detour-support",
+    "title": "A four-row support can still be inclusion-minimal",
+    "request": {
+      "variables": [
+        {
+          "name": "A",
+          "parents": ["C"],
+          "preferred": [0, 0]
+        },
+        {
+          "name": "B",
+          "parents": ["A"],
+          "preferred": [0, 1]
+        },
+        {
+          "name": "C",
+          "parents": ["A"],
+          "preferred": [0, 1]
+        },
+        {
+          "name": "D",
+          "parents": [],
+          "preferred": [1]
+        }
+      ],
+      "start": "1101",
+      "target": "0001"
+    }
+  }
+]

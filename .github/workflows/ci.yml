@@ -24,4 +24,4 @@ jobs:
         with:
           node-version: "22"
       - uses: browser-actions/setup-chrome@v1
-      - run: node --test tests/test_engine.mjs tests/test_browser.cjs
+      - run: node --test tests/test_engine.mjs tests/test_scopes.mjs tests/test_browser.cjs tests/test_scopes_browser.cjs
