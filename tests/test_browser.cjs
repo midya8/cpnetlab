@@ -355,9 +355,18 @@ test(
       );
     } finally {
       ws?.close();
+      // Await process exit before removing its profile. Chrome subprocesses can
+      // briefly finish writes after termination; only local cleanup retries.
+      const exited = new Promise((r) => browser.once("close", r));
       browser.kill("SIGKILL");
+      if (browser.exitCode === null) await exited;
       await new Promise((r) => server.close(r));
-      fs.rmSync(profile, { recursive: true, force: true });
+      fs.rmSync(profile, {
+        recursive: true,
+        force: true,
+        maxRetries: 10,
+        retryDelay: 100,
+      });
     }
   },
 );
