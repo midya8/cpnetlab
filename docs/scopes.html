@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>CPNetLab - minimal is not minimum</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="scopes.css" />
+  </head>
+  <body>
+    <main>
+      <nav>
+        <strong>CPNetLab / row subsets</strong
+        ><a href="index.html">Complete model</a
+        ><a href="https://github.com/midya8/cpnetlab">Source</a>
+      </nav>
+      <header>
+        <p class="eyebrow">EVERY WHOLE-ROW SUBSET / EXACT WHAT-IF GRAPHS</p>
+        <h1>Minimal is not<br />minimum.</h1>
+        <p class="intro">
+          A one-row withdrawal can restore a strict ranking. A different two-row
+          withdrawal can also be irreducible. Inspect every possibility, not one
+          convenient repair.
+        </p>
+        <div class="tags">
+          <span>All row subsets</span><span>Paths, conflicts, withdrawals</span
+          ><span>The supplied model stays intact</span>
+        </div>
+      </header>
+      <section class="setup">
+        <div>
+          <label for="control">Choose a controlled experiment</label
+          ><select id="control"></select>
+          <p id="experiment-title" class="experiment-title"></p>
+          <details>
+            <summary>Edit the complete supplied model</summary>
+            <label for="request"
+              >Complete binary model and fixed outcome query</label
+            ><textarea id="request" rows="14" spellcheck="false"></textarea>
+          </details>
+          <div class="buttons">
+            <button id="build">Build every row subset</button
+            ><button id="download" disabled>
+              Download row-subset evidence
+            </button>
+          </div>
+          <p id="status" role="status"></p>
+        </div>
+        <aside>
+          <p class="eyebrow">WITHDRAW A STATEMENT, NOT AN OUTCOME</p>
+          <h2>One row can<br />govern many flips.</h2>
+          <p>
+            Withdrawing a conditional row removes every improving edge justified
+            by that row. It does not reverse the preference, make the values
+            indifferent, remove any outcomes or change the original supplied
+            model.
+          </p>
+          <p>
+            These are counterfactual constraint graphs, not complete CP-nets
+            after withdrawal, automatic recommendations or extended
+            partial-model semantics. A path is reported even in an inconsistent
+            graph, without calling it an entailed strict preference.
+          </p>
+        </aside>
+      </section>
+      <section id="output" hidden>
+        <p class="eyebrow">COMPLETE ROW-SUBSET ATLAS</p>
+        <h2 id="headline"></h2>
+        <div id="stats" class="stats"></div>
+        <p class="warning">
+          Minimal means no proper subset works. Minimum means the smallest
+          number of rows. Neither means the right preference to abandon. No row
+          is changed or sent anywhere.
+        </p>
+        <section class="selection">
+          <h2>Inspect any retained-row subset</h2>
+          <label for="subset">Select the exact row mask</label
+          ><select id="subset"></select>
+          <p id="selected-label"></p>
+          <div id="row-toggles" class="row-toggles"></div>
+          <p id="selected-verdict" class="warning"></p>
+          <div class="two">
+            <article>
+              <h3>Start → target</h3>
+              <p id="forward" class="path"></p>
+            </article>
+            <article>
+              <h3>Target → start</h3>
+              <p id="backward" class="path"></p>
+            </article>
+          </div>
+          <article class="selected-witness">
+            <h3 id="witness-title"></h3>
+            <p id="witness" class="path"></p>
+          </article>
+        </section>
+        <section>
+          <p class="eyebrow">ALL INCLUSION-MINIMAL SUPPORTS</p>
+          <h2>Which whole rows suffice for a path?</h2>
+          <p>
+            Both directions are positive-length graph reachability. Identity
+            requires a cycle. These supports do not by themselves certify
+            consistency or an entailed preference. A support may contain more
+            rows and use a longer path than another irreducible support.
+          </p>
+          <div class="two">
+            <section>
+              <h3>Start → target supports</h3>
+              <div id="forward-supports" class="evidence-list"></div>
+            </section>
+            <section>
+              <h3>Target → start supports</h3>
+              <div id="backward-supports" class="evidence-list"></div>
+            </section>
+          </div>
+        </section>
+        <section class="conflict-section">
+          <p class="eyebrow">CONFLICTS AND THEIR HITTING SETS</p>
+          <h2>
+            Every irreducible conflict.<br />Every irreducible withdrawal.
+          </h2>
+          <p>
+            A conflict has no compatible strict ranking, but every proper subset
+            does. A withdrawal restores a ranking, but putting back any
+            withdrawn row restores inconsistency. Every withdrawal must
+            intersect every conflict. The smallest withdrawals are labeled
+            separately.
+          </p>
+          <div class="two">
+            <section>
+              <h3>Minimal inconsistent row cores</h3>
+              <div id="conflicts" class="evidence-list"></div>
+            </section>
+            <section>
+              <h3>Minimal row withdrawals</h3>
+              <div id="withdrawals" class="evidence-list"></div>
+            </section>
+          </div>
+        </section>
+        <section class="audit">
+          <h2>Complete enumeration, separate reconstruction</h2>
+          <p>
+            Python builds edges by complete conditional rows and uses
+            breadth-first paths and immediate-subset tests. The independent
+            checker rebuilds row edges from Hamming-one outcome pairs, uses
+            Floyd-Warshall distances, and compares all proper subsets. It
+            verifies every graph record and every antichain, not just displayed
+            examples. JavaScript uses the base engine's validation and improving
+            graph; it is not a separate verifier.
+          </p>
+          <p>
+            Browser JSON is independently checked only after
+            <code>cpnetlab verify-scopes evidence.json</code> accepts it. Shared
+            input validation and binary outcome encoding are disclosed.
+          </p>
+        </section>
+      </section>
+      <footer>
+        <p class="eyebrow">EXACT ADDITIONAL BOUND</p>
+        <h2>Eight conditional rows.<br />At most 256 counterfactuals.</h2>
+        <p>
+          The original complete-model inspector still supports zero to four
+          binary variables. This atlas additionally allows at most eight
+          complete conditional table rows. Every outcome remains present for
+          every subset. No ranking count is computed for a subset: the order
+          shown is one actual witness, never the only order.
+        </p>
+        <p>
+          Minimal-conflict and correction-set concepts are established prior
+          work. This is bounded exhaustive evidence, not a new algorithm,
+          scalable diagnosis solver, learned human preference or advice to
+          revise a preference. See the
+          <a href="https://github.com/midya8/cpnetlab/blob/main/ROW-SUBSETS.md"
+            >row-subset contract</a
+          >
+          and
+          <a href="https://github.com/midya8/cpnetlab/blob/main/SOURCES.md"
+            >source ledger</a
+          >.
+        </p>
+      </footer>
+    </main>
+    <script type="module" src="scopes-app.js"></script>
+  </body>
+</html>
