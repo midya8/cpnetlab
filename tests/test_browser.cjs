@@ -314,12 +314,16 @@ test(
       });
       await set("control", 5);
       await shot("state-fanout");
-      const expected = await js("window.cpnetReport");
-      await js(
-        'window.downloadBody=null;window.downloadName=null;URL.createObjectURL=b=>{window.downloadBody=b.text();return"blob:test"};URL.revokeObjectURL=()=>{};HTMLAnchorElement.prototype.click=function(){window.downloadName=this.download};document.getElementById("download").click()',
-      );
-      assert.equal(await js("window.downloadName"), "cpnetlab-evidence.json");
-      assert.deepEqual(JSON.parse(await js("window.downloadBody")), expected);
+      for (let i = 0; i < cs.length; i++) {
+        await set("control", i);
+        const expected = await js("window.cpnetReport");
+        await js(
+          'window.downloadBody=null;window.downloadName=null;URL.createObjectURL=b=>{window.downloadBody=b.text();return"blob:test"};URL.revokeObjectURL=()=>{};HTMLAnchorElement.prototype.click=function(){window.downloadName=this.download};document.getElementById("download").click()',
+        );
+        assert.equal(await js("window.downloadName"), "cpnetlab-evidence.json");
+        assert.deepEqual(JSON.parse(await js("window.downloadBody")), expected);
+      }
+      await set("control", 5);
       await set("request", "{}", "input");
       assert.equal(await js("window.cpnetReport"), null);
       assert.equal(await js('document.getElementById("output").hidden'), true);
@@ -347,7 +351,7 @@ test(
         JSON.stringify({
           browserReports: reports.length,
           orderedQueries: queries.length,
-          export: true,
+          exportControls: cs.length,
           stale: true,
           invalid: true,
           cycleRecovery: true,
