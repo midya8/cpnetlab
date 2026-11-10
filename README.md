@@ -60,8 +60,10 @@ inputs, forged evidence and disabled-generator verification. Eight control
 reports agree exactly between Python and JavaScript on 61 outcomes and 100
 edges. Actual Chrome checks 24 control reports at three widths and every one
 of 689 ordered control-pair queries, plus export, stale clearing, invalid input
-and cyclic/consistent recovery. Publication, installed/fresh-source reproduction,
-CI, deployment and showcase gates are not yet complete.
+and cyclic/consistent recovery. Installed-wheel checks run all eight controls
+outside the source checkout through both module and console entry points and
+reject forged counts. Repository CI repeats Python, installed and actual Chrome
+checks. Passing a local test alone does not verify a deployed page.
 
 ## Scope
 
