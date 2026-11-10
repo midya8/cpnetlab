@@ -24,6 +24,22 @@ one in each direction. Incomparability is not indifference.
 
 These are developed synthetic controls, not measured human choices.
 
+## Whole-row counterfactual atlas
+
+The row-subset inspector answers a different question: which complete conditional
+rows suffice for a query path or cause inconsistency, and which withdrawals
+restore a ranking? It enumerates every subset of at most eight complete rows,
+with actual path, cycle and ranking witnesses, all minimal conflicts and all
+minimal withdrawals. Minimal does not mean minimum: the default eight-row
+control has four irreducible one-row withdrawals and two irreducible two-row
+withdrawals. A separate control has two-row and four-row minimal path supports.
+Whole-row withdrawal removes all justified flips, not one arbitrary edge.
+It is a counterfactual graph, not automatic preference revision or indifference.
+The original complete supplied model and all outcomes stay intact.
+
+Open `docs/scopes.html` from the static server. See [ROW-SUBSETS.md](ROW-SUBSETS.md)
+for the exact schema, eight controls, separate verifier and limits.
+
 ## Run locally
 
 Python 3.10+ and Node 22+ for browser tests. No runtime Python dependencies.
@@ -33,10 +49,12 @@ python -m pip install .
 python -m cpnetlab analyze docs/example.json > evidence.json
 python -m cpnetlab verify evidence.json
 cpnetlab verify evidence.json
+cpnetlab scopes docs/example.json > rows.json
+cpnetlab verify-scopes rows.json
 python -m unittest discover -s tests -v
-node --test tests/test_engine.mjs
+node --test tests/test_engine.mjs tests/test_scopes.mjs
 # Actual Chrome tests need google-chrome on PATH:
-node --test tests/test_browser.cjs
+node --test tests/test_browser.cjs tests/test_scopes_browser.cjs
 # Serve docs using any static HTTP server:
 python -m http.server --directory docs 8000
 ```
