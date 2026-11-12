@@ -1,7 +1,5 @@
 # CPNetLab
 
-A ranking is not an entailed preference.
-
 A dependency-free, bounded qualitative preference-network workbench. Complete
 binary CP-nets define legal single-variable improving flips. CPNetLab computes
 the complete outcome graph, every shortest positive-length reachability path,
@@ -9,7 +7,18 @@ actual inconsistency cycles and the exact number of compatible strict rankings.
 For a consistent model, an incomparable pair gets two actual ranking witnesses,
 one in each direction. Incomparability is not indifference.
 
-## Controls that separate the claims
+## Choose an analysis
+
+| Question | Entry point | Result |
+| --- | --- | --- |
+| What follows from the complete model? | `analyze`, `verify`, `docs/index.html` | Reachability paths, inconsistency cycles, ranking counts and incomparability witnesses |
+| Which whole rows support a path or conflict? | `scopes`, `verify-scopes`, `docs/scopes.html` | Every row subset, minimal supports, conflicts and consistency-restoring withdrawals |
+
+A compatible ranking is one possible total order, not an entailed preference.
+For row withdrawals, inclusion-minimal does not mean smallest. Neither analysis
+measures human choices or recommends a preference change.
+
+## Complete-model controls
 
 - The same two-variable dependency cycle can be consistent (four compatible
   rankings, two locally unimprovable outcomes) or inconsistent (an explicit
@@ -59,7 +68,7 @@ node --test tests/test_browser.cjs tests/test_scopes_browser.cjs
 python -m http.server --directory docs 8000
 ```
 
-## Evidence and independence
+## How reports are checked
 
 Python builds flips from each conditional row, finds paths with breadth-first
 search and counts compatible rankings by prefix-ideal subset DP. A separate
@@ -71,7 +80,7 @@ encoding are disclosed. JavaScript uses BigInt for ranking counts, serialized
 as exact decimal strings. Browser evidence is independently checked only when
 the Python checker accepts the complete JSON.
 
-Local checks currently include every one of the 36 two-variable networks and
+Complete-model checks include every one of the 36 two-variable networks and
 all 576 ordered network/pair queries; all 40,320 permutations for each of five
 three-variable fixtures; 160 seeded one-to-four-variable networks; malformed
 inputs, forged evidence and disabled-generator verification. Eight control
